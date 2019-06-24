@@ -48,3 +48,8 @@ complete -W "NSGlobalDomain" defaults;
 
 # Add `killall` tab completion for common apps
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
+
+# britecore specific setup
+source ~/bx/.venv/bin/activate
+export REPO_DIR=~/bx
+export COMPOSE_HTTP_TIMEOUT=300
