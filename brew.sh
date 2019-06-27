@@ -96,5 +96,8 @@ brew install tree
 brew install vbindiff
 brew install zopfli
 
+# install useful tools
+brew install ossp-uuid
+
 # Remove outdated versions from the cellar.
 brew cleanup
