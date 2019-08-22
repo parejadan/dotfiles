@@ -1,0 +1,39 @@
+#BDE setups
+export REPO_DIR=~/bx
+export BRITE_DEV=$REPO_DIR/britedevenv
+export PATH=$PATH:$BRITE_DEV
+export COMPOSE_HTTP_TIMEOUT=300
+export DEPLOYMENT_PATH=/srv/www
+
+#shorthand tools for BDE
+alias regen_env="./cfg_to_env.py $REPO_DIR/britecore/britecore.cfg"
+
+build_env() {
+    docker-compose -f "$BRITE_DEV/clients-$1.yml" -p $1 build
+}
+
+start_env() {
+	docker-compose -f "$BRITE_DEV/clients-$1.yml" -p $1 up -d
+}
+
+stop_env() {
+	docker-compose -f "$BRITE_DEV/clients-$1.yml" -p $1 stop
+}
+
+down_env() {
+	docker-compose -f "$BRITE_DEV/clients-$1.yml" -p $1 down
+}
+
+enter_web() {
+	docker exec -it "$1_web_1" bash
+}
+
+alias clean_env="./tools/destroy_all.sh"
+
+existing_ymls() {
+	echo ""
+	for yml in $BRITE_DEV/clients-*; do
+	    echo -n "$yml - [Last Modified] "; stat -f "%Sm" -t "%Y-%m-%d %H:%M" "$yml"
+	done;
+	echo ""
+}
