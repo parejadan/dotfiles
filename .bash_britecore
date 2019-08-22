@@ -60,7 +60,7 @@ delete_env() {
 	down_env $1
 	cleanup_containers $1
 	cleanup_images $1
-	docker ps --all
+	docker system df
 }
 
 help_env() {
