@@ -105,5 +105,11 @@ brew install pango
 # install useful tools
 brew install ossp-uuid
 
+# install protonvpn dependencies
+brew install openvpn
+brew install dialog
+brew install wget
+brew install jq
+
 # Remove outdated versions from the cellar.
 brew cleanup
