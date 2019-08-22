@@ -85,3 +85,11 @@ enter_web() {
 }
 
 alias clean_env="./tools/destroy_all.sh"
+
+existing_ymls() {
+	echo ""
+	for yml in $BRITE_DEV/clients-*; do
+	    echo -n "$yml - [Last Modified] "; stat -f "%Sm" -t "%Y-%m-%d %H:%M" "$yml"
+	done;
+	echo ""
+}
