@@ -48,8 +48,40 @@ complete -W "NSGlobalDomain" defaults;
 
 # Add `killall` tab completion for common apps
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
+export PATH=$(brew --prefix openvpn)/sbin:$PATH
 
 # britecore specific setup
 source ~/bx/.venv/bin/activate
+alias aws_britecore="cp ~/.aws/credentials.britecore.bac ~/.aws/credentials"
+alias aws_bopbloc="cp ~/.aws/credentials.beepbop.bac ~/.aws/credentials"
+
+#britedevenv setups
 export REPO_DIR=~/bx
+export BRITE_DEV=$REPO_DIR/britedevenv
+export PATH=$PATH:$BRITE_DEV
 export COMPOSE_HTTP_TIMEOUT=300
+export DEPLOYMENT_PATH=/srv/www
+
+alias regen_env="./create_client.py $REPO_DIR/britecore/britecore.cfg"
+
+build_env() {
+    docker-compose -f "$BRITE_DEV/clients-$1.yml" -p $1 build
+}
+
+start_env() {
+	docker-compose -f "$BRITE_DEV/clients-$1.yml" -p $1 up -d
+}
+
+stop_env() {
+	docker-compose -f "$BRITE_DEV/clients-$1.yml" -p $1 stop
+}
+
+down_env() {
+	docker-compose -f "$BRITE_DEV/clients-$1.yml" -p $1 down
+}
+
+enter_web() {
+	docker exec -it "$1_web_1" bash
+}
+
+alias clean_env="./tools/destroy_all.sh"
