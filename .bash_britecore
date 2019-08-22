@@ -8,6 +8,11 @@ export DEPLOYMENT_PATH=/srv/www
 #shorthand tools for BDE
 alias regen_env="python $BRITE_DEV/tools/cfg_to_env.py $REPO_DIR/britecore/britecore.cfg"
 
+
+make_yml() {
+	python $BRITE_DEV/create_client.py $1
+}
+
 build_env() {
     docker-compose -f "$BRITE_DEV/clients-$1.yml" -p $1 build
 }
@@ -56,15 +61,23 @@ cleanup_images() {
 	docker image rm "$1_web"
 }
 
+cleanup_volumes() {
+	docker volume rm "$1-db"
+	docker volume rm "$1-elasticsearch"
+}
+
 delete_env() {
 	down_env $1
 	cleanup_containers $1
 	cleanup_images $1
+	cleanup_volumes $1
 	docker system df
 }
 
 help_env() {
 	echo ""
+
+    echo "make_yml  <client-name>"
 	echo "build_env <client-name>"
 	echo "start_env <client-name>"
 	echo "stop_env  <client-name>"
@@ -72,6 +85,7 @@ help_env() {
 	echo "enter_web <client-name>"
 	echo "existing_ymls"
 	echo "regen_env"
-	echo ""
 	echo "delete_env <client-name>"
+
+	echo ""
 }
