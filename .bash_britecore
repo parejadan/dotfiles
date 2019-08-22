@@ -6,7 +6,7 @@ export COMPOSE_HTTP_TIMEOUT=300
 export DEPLOYMENT_PATH=/srv/www
 
 #shorthand tools for BDE
-alias regen_env="./cfg_to_env.py $REPO_DIR/britecore/britecore.cfg"
+alias regen_env="python $BRITE_DEV/tools/cfg_to_env.py $REPO_DIR/britecore/britecore.cfg"
 
 build_env() {
     docker-compose -f "$BRITE_DEV/clients-$1.yml" -p $1 build
