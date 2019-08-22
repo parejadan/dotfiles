@@ -87,6 +87,7 @@ help_env() {
 	echo "existing_ymls"
 	echo "regen_env"
     echo "sequel_env"
+	echo "destroy_dangling"
 	echo "delete_env <client-name>"
     echo "sequel_env <client-name>"
 
