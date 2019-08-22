@@ -28,7 +28,7 @@ enter_web() {
 	docker exec -it "$1_web_1" bash
 }
 
-alias clean_env="./tools/destroy_all.sh"
+alias destroy_dangling="./tools/destroy_all.sh"
 
 existing_ymls() {
 	echo ""
@@ -36,6 +36,31 @@ existing_ymls() {
 	    echo -n "$yml - [Last Modified] "; stat -f "%Sm" -t "%Y-%m-%d %H:%M" "$yml"
 	done;
 	echo ""
+}
+
+cleanup_containers() {
+	docker rm "$1_web_1"
+	docker rm "$1_db-setup_1"
+	docker rm "$1_task-queue_1"
+	docker rm "$1_britecore_1"
+	docker rm "$1_db_1"
+	docker rm "$1_base_1"
+	docker rm "$1_rabbitmq_1"
+	docker rm "$1_redis_1"
+	docker rm "$1_elasticsearch_1"
+}
+
+cleanup_images() {
+	docker image rm "$1_db-setup"
+	docker image rm "$1_task-queue"
+	docker image rm "$1_web"
+}
+
+delete_env() {
+	down_env $1
+	cleanup_containers $1
+	cleanup_images $1
+	docker ps --all
 }
 
 help_env() {
@@ -48,4 +73,5 @@ help_env() {
 	echo "existing_ymls"
 	echo "regen_env"
 	echo ""
+	echo "delete_env <client-name>"
 }
