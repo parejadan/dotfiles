@@ -7,7 +7,7 @@ export DEPLOYMENT_PATH=/srv/www
 
 #shorthand tools for BDE
 alias regen_env="python $BRITE_DEV/tools/cfg_to_env.py $REPO_DIR/britecore/britecore.cfg"
-
+alias sequel_env="python $BRITE_DEV/tools/sequelpro.py"
 
 make_yml() {
 	python $BRITE_DEV/create_client.py $1
@@ -74,6 +74,7 @@ delete_env() {
 	docker system df
 }
 
+
 help_env() {
 	echo ""
 
@@ -85,7 +86,9 @@ help_env() {
 	echo "enter_web <client-name>"
 	echo "existing_ymls"
 	echo "regen_env"
+    echo "sequel_env"
 	echo "delete_env <client-name>"
+    echo "sequel_env <client-name>"
 
 	echo ""
 }
