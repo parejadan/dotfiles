@@ -37,3 +37,15 @@ existing_ymls() {
 	done;
 	echo ""
 }
+
+help_env() {
+	echo ""
+	echo "build_env <client-name>"
+	echo "start_env <client-name>"
+	echo "stop_env  <client-name>"
+	echo "down_env  <client-name>"
+	echo "enter_web <client-name>"
+	echo "existing_ymls"
+	echo "regen_env"
+	echo ""
+}
