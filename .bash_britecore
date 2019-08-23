@@ -10,6 +10,7 @@ alias regen_env="python $BRITE_DEV/tools/cfg_to_env.py $REPO_DIR/britecore/brite
 alias sequel_env="python $BRITE_DEV/tools/sequelpro.py"
 alias create_client="python $BRITE_DEV/create_client.py"
 alias docker_stat="docker system df"
+alias destroy_dangling="./tools/destroy_all.sh"
 
 make_yml() {
 	python $BRITE_DEV/create_client.py $1
@@ -34,8 +35,6 @@ down_env() {
 enter_web() {
 	docker exec -it "$1_web_1" bash
 }
-
-alias destroy_dangling="./tools/destroy_all.sh"
 
 existing_ymls() {
 	echo ""
@@ -76,6 +75,15 @@ delete_env() {
 	docker_stat
 }
 
+stat_env() {
+	if [ -z $1 ]
+	then
+	    docker ps --format '{{.Names}}'
+	else
+	    docker ps --format '{{.Names}}' | grep $1
+	fi
+}
+
 
 help_env() {
 	echo ""
@@ -92,6 +100,8 @@ help_env() {
 	echo "destroy_dangling"
 	echo "docker_stat"
 	echo "create_client"
+	echo "stat_env"
+	echo "stat_env <client-name>"
 	echo "delete_env <client-name>"
     echo "sequel_env <client-name>"
 
