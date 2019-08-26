@@ -17,7 +17,10 @@ make_yml() {
 }
 
 build_env() {
+	originating_dir=$(pwd)
+	cd $BRITE_DEV
     docker-compose -f "$BRITE_DEV/clients-$1.yml" -p $1 build
+	cd $originating_dir
 }
 
 start_env() {
