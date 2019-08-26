@@ -20,6 +20,8 @@ build_env() {
 	originating_dir=$(pwd)
 	cd $BRITE_DEV
     docker-compose -f "$BRITE_DEV/clients-$1.yml" -p $1 build
+	docker volume create --name="$1-db"
+	docker volume create --name="$1-elasticsearch"
 	cd $originating_dir
 }
 
