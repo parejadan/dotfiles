@@ -69,7 +69,6 @@ cleanup_volumes() {
 
 delete_env() {
 	down_env $1
-	cleanup_containers $1
 	cleanup_images $1
 	cleanup_volumes $1
 	docker_stat
