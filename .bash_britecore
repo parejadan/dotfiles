@@ -11,6 +11,7 @@ alias sequel_env="python $BRITE_DEV/tools/sequelpro.py"
 alias create_client="python $BRITE_DEV/create_client.py"
 alias docker_stat="docker system df"
 alias destroy_dangling="./tools/destroy_all.sh"
+alias main_editor="code"
 
 make_yml() {
 	python $BRITE_DEV/create_client.py $1
@@ -88,6 +89,9 @@ stat_env() {
 	fi
 }
 
+open_yml() {
+	main_editor "$BRITE_DEV/clients-$1.yml"
+}
 
 help_env() {
 	echo ""
@@ -105,6 +109,7 @@ help_env() {
 	echo "docker_stat"
 	echo "create_client"
 	echo "stat_env"
+	echo "open_yml <client_name>"
 	echo "stat_env <client-name>"
 	echo "delete_env <client-name>"
     echo "sequel_env <client-name>"
