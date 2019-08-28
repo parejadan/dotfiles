@@ -13,16 +13,11 @@ alias docker_stat="docker system df"
 alias destroy_dangling="./tools/destroy_all.sh"
 alias main_editor="code"
 
-make_yml() {
-	python $BRITE_DEV/create_client.py $1
-}
-
 build_env() {
 	originating_dir=$(pwd)
 	cd $BRITE_DEV
+	create_client $1
     docker-compose -f "$BRITE_DEV/clients-$1.yml" -p $1 build
-	docker volume create --name="$1-db"
-	docker volume create --name="$1-elasticsearch"
 	cd $originating_dir
 }
 
