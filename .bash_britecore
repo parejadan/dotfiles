@@ -4,6 +4,7 @@ export BRITE_DEV=$REPO_DIR/britedevenv
 export PATH=$PATH:$BRITE_DEV
 export COMPOSE_HTTP_TIMEOUT=300
 export DEPLOYMENT_PATH=/srv/www
+export PYTHON_VENVS=$REPO_DIR/venvs
 
 #shorthand tools for BDE
 alias regen_env="python $BRITE_DEV/tools/cfg_to_env.py $REPO_DIR/britecore/britecore.cfg"
@@ -12,6 +13,8 @@ alias create_client="python $BRITE_DEV/create_client.py"
 alias docker_stat="docker system df"
 alias destroy_dangling="./tools/destroy_all.sh"
 alias main_editor="code"
+alias activate_p3="source $PYTHON_VENVS/venv3.7/bin/activate"
+alias activate_p2="source $PYTHON_VENVS/venv2.7/bin/activate"
 
 build_env() {
 	originating_dir=$(pwd)
@@ -90,6 +93,7 @@ open_yml() {
 
 
 audit_git_email() {
+	git filter-branch --env-filter '
 	old_email = $1
 	new_email = $2
 
@@ -117,6 +121,8 @@ help_env() {
 	echo "regen_env"
     echo "sequel_env"
 	echo "destroy_dangling"
+	echo "activate_p2  # use python2.7"
+	echo "activate_p3  # use python3.7.3"
 	echo "docker_stat"
 	echo "create_client"
 	echo "stat_env"
