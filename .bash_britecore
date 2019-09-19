@@ -5,6 +5,7 @@ export PATH=$PATH:$BRITE_DEV
 export COMPOSE_HTTP_TIMEOUT=300
 export DEPLOYMENT_PATH=/srv/www
 export PYTHON_VENVS=$REPO_DIR/venvs
+export sandbox="test_britecore"
 
 #shorthand tools for BDE
 alias regen_env="python $BRITE_DEV/tools/cfg_to_env.py $REPO_DIR/britecore/britecore.cfg"
@@ -16,10 +17,14 @@ alias main_editor="code"
 alias activate_p3="source $PYTHON_VENVS/venv3.7/bin/activate"
 alias activate_p2="source $PYTHON_VENVS/venv2.7/bin/activate"
 
+create_sandbox() {
+	python $BRITE_DEV/create_test_client.py
+	mv $BRITE_DEV/test_britecore.yml $BRITE_DEV/clients-test_britecore.yml
+}
+
 build_env() {
 	originating_dir=$(pwd)
 	cd $BRITE_DEV
-	create_client $1
     docker-compose -f "$BRITE_DEV/clients-$1.yml" -p $1 build
 	cd $originating_dir
 }
@@ -124,6 +129,7 @@ help_env() {
 	echo "activate_p3  # use python3.7.3"
 	echo "docker_stat"
 	echo "create_client"
+	echo "create_sandbox"
 	echo "stat_env"
 	echo "open_yml <client_name>"
 	echo "stat_env <client-name>"
