@@ -3,7 +3,6 @@ export REPO_DIR=~/bx
 export BRITE_DEV=$REPO_DIR/britedevenv
 export PATH=$PATH:$BRITE_DEV
 export COMPOSE_HTTP_TIMEOUT=300
-export DEPLOYMENT_PATH=/srv/www
 export PYTHON_VENVS=$REPO_DIR/venvs
 export sandbox="test_britecore"
 
