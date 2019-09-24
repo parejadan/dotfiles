@@ -24,6 +24,8 @@ create_sandbox() {
 build_env() {
 	originating_dir=$(pwd)
 	cd $BRITE_DEV
+	docker volume create --name $1-db
+	docker volume create --name $1-elasticsearch
     docker-compose -f "$BRITE_DEV/clients-$1.yml" -p $1 build
 	cd $originating_dir
 }
