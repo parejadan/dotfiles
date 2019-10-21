@@ -96,5 +96,13 @@ brew install tree
 brew install vbindiff
 brew install zopfli
 
+# node + node manager
+brew install node
+brew install nvm
+
+
+# mysql client
+brew install mysql-client
+
 # Remove outdated versions from the cellar.
 brew cleanup

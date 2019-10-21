@@ -6,6 +6,14 @@ export COMPOSE_HTTP_TIMEOUT=300
 export PYTHON_VENVS=$REPO_DIR/venvs
 export sandbox="test_britecore"
 
+# node setup
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
+
+# mysql client dependencies
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/opt/openssl/lib/"
+
 #shorthand tools for BDE
 alias regen_env="python $BRITE_DEV/tools/cfg_to_env.py $REPO_DIR/britecore/britecore.cfg"
 alias sequel_env="python $BRITE_DEV/tools/sequelpro.py"
