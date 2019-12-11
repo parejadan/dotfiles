@@ -101,8 +101,11 @@ brew install node
 brew install nvm
 
 
-# mysql client
+# britedata-py-reports dependencies
 brew install mysql-client
+brew install mysql
+brew install cairo
+brew install pango
 
 # Remove outdated versions from the cellar.
 brew cleanup
