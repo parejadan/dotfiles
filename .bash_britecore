@@ -121,6 +121,17 @@ audit_git_email() {
 	' --tag-name-filter cat -- --branches --tags
 }
 
+
+stat_smore() {
+	tsh ls | grep $1 | tr ' ' '\n' | awk '/$1/ && !/name=/'
+}
+
+
+ssh_smore() {
+    tsh ssh $1
+}
+
+
 help_env() {
 	echo ""
 
@@ -145,6 +156,7 @@ help_env() {
 	echo "delete_env <client-name>"
     echo "sequel_env <client-name>"
 	echo "audit_git_email <old-email> <new-email>"
-
+    echo "stat_smore <smore-name>"
+	echo "ssh_smore <output-of-stat-smore>"
 	echo ""
 }
