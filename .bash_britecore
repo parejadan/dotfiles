@@ -6,10 +6,6 @@ export COMPOSE_HTTP_TIMEOUT=300
 export PYTHON_VENVS=$REPO_DIR/venvs
 export sandbox="test_britecore"
 
-# node setup
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
-
 # mysql client dependencies
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/opt/openssl/lib/"
@@ -107,18 +103,11 @@ open_yml() {
 
 
 audit_git_email() {
-	git filter-branch -f --env-filter '
 	OLD_EMAIL=$1
 	CORRECT_EMAIL=$2
-	if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]
-	then
-		export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
-	fi
-	if [ "$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]
-	then
-		export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
-	fi
-	' --tag-name-filter cat -- --branches --tags
+	git filter-branch -f --env-filter \
+	"GIT_AUTHOR_NAME='Daniel Pareja'; GIT_AUTHOR_EMAIL='$CORRECT_EMAIL'; \
+	GIT_COMMITTER_NAME='Daniel Pareja'; GIT_COMMITTER_EMAIL='$OLD_EMAIL';" HEAD
 }
 
 
