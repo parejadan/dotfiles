@@ -96,11 +96,6 @@ brew install tree
 brew install vbindiff
 brew install zopfli
 
-# node + node manager
-brew install node
-brew install nvm
-
-
 # britedata-py-reports dependencies
 brew install mysql-client
 brew install mysql
