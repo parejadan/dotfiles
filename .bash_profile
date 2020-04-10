@@ -51,6 +51,8 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 export PATH=$(brew --prefix openvpn)/sbin:$PATH
 
 # britecore specific setup
-source ~/bx/venvs/venv3.7/bin/activate
+source ~/.bash_britecore
+
+source ~/venvs/venv3.7/bin/activate
 alias aws_britecore="cp ~/.aws/credentials.britecore.bac ~/.aws/credentials"
 alias aws_bopbloc="cp ~/.aws/credentials.beepbop.bac ~/.aws/credentials"

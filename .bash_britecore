@@ -3,7 +3,7 @@ export REPO_DIR=~/bx
 export BRITE_DEV=$REPO_DIR/britedevenv
 export PATH=$PATH:$BRITE_DEV
 export COMPOSE_HTTP_TIMEOUT=300
-export PYTHON_VENVS=$REPO_DIR/venvs
+export PYTHON_VENVS=~/venvs
 export sandbox="test_britecore"
 
 # mysql client dependencies
