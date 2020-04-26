@@ -61,6 +61,7 @@ alias aws_bopbloc="cp ~/.aws/credentials.beepbop.bac ~/.aws/credentials"
 # The next line updates PATH for the Google Cloud SDK.
 
 export GCLOUD_PATH=~/sandbox/google-cloud-sdk
+export GOOGLE_APPLICATION_CREDENTIALS=$GCLOUD_PATH/.gcloud_account.json
 
 if [ -f "$GCLOUD_PATH/path.bash.inc" ]; then . $GCLOUD_PATH/path.bash.inc; fi
 
