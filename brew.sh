@@ -104,6 +104,13 @@ brew install pango
 
 # install useful tools
 brew install ossp-uuid
+brew install gnu-sed
+brew install terraform
+
+# kubernetes tools
+brew install minikube
+brew install kubectl
+
 
 # Remove outdated versions from the cellar.
 brew cleanup

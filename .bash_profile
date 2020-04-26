@@ -1,5 +1,6 @@
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH";
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
@@ -56,3 +57,12 @@ source ~/.bash_britecore
 source ~/venvs/venv3.7/bin/activate
 alias aws_britecore="cp ~/.aws/credentials.britecore.bac ~/.aws/credentials"
 alias aws_bopbloc="cp ~/.aws/credentials.beepbop.bac ~/.aws/credentials"
+
+# The next line updates PATH for the Google Cloud SDK.
+
+export GCLOUD_PATH=~/sandbox/google-cloud-sdk
+
+if [ -f "$GCLOUD_PATH/path.bash.inc" ]; then . $GCLOUD_PATH/path.bash.inc; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f "$GCLOUD_PATH/completion.bash.inc" ]; then . $GCLOUD_PATH/completion.bash.inc ; fi
