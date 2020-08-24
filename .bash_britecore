@@ -35,15 +35,24 @@ build_env() {
 }
 
 start_env() {
+	originating_dir=$(pwd)
+	cd $BRITE_DEV
 	docker-compose -f "$BRITE_DEV/clients-$1.yml" -p $1 up -d
+	cd $originating_dir
 }
 
 stop_env() {
+	originating_dir=$(pwd)
+	cd $BRITE_DEV
 	docker-compose -f "$BRITE_DEV/clients-$1.yml" -p $1 stop
+	cd $originating_dir
 }
 
 down_env() {
+	originating_dir=$(pwd)
+	cd $BRITE_DEV
 	docker-compose -f "$BRITE_DEV/clients-$1.yml" -p $1 down
+	cd $originating_dir
 }
 
 enter_web() {

@@ -106,6 +106,7 @@ brew install pango
 brew install ossp-uuid
 brew install gnu-sed
 brew install terraform
+brew install jq
 
 # kubernetes tools
 brew install minikube
