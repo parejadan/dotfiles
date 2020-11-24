@@ -129,10 +129,14 @@ ssh_smore() {
     tsh ssh $1
 }
 
+pyclean () {
+        find . -type f -name "*.py[co]" -delete
+        find . -type d -name "__pycache__" -delete
+}
 
 help_env() {
 	echo ""
-
+    echo "pyclean"
     echo "make_yml  <client-name>"
 	echo "build_env <client-name>"
 	echo "start_env <client-name>"
