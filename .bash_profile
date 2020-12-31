@@ -49,8 +49,7 @@ complete -W "NSGlobalDomain" defaults;
 # Add `killall` tab completion for common apps
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
 export PATH=$(brew --prefix openvpn)/sbin:$PATH
-
-# britecore specific setup
-source ~/bx/venvs/venv3.7/bin/activate
-alias aws_britecore="cp ~/.aws/credentials.britecore.bac ~/.aws/credentials"
-alias aws_bopbloc="cp ~/.aws/credentials.beepbop.bac ~/.aws/credentials"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+git config --global user.name "Daniel Pareja"
+git config --global user.email "ParejaDan@gmail.com"

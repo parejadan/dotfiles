@@ -96,20 +96,10 @@ brew install tree
 brew install vbindiff
 brew install zopfli
 
-# britedata-py-reports dependencies
-brew install mysql-client
-brew install mysql
-brew install cairo
-brew install pango
-
 # install useful tools
 brew install ossp-uuid
-
-# install protonvpn dependencies
-brew install openvpn
-brew install dialog
-brew install wget
-brew install jq
+brew install pyenv
+brew install pyenv-virtualenv
 
 # Remove outdated versions from the cellar.
 brew cleanup

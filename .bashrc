@@ -1,1 +1,1 @@
-[ -n "$PS1" ] && source ~/.bash_profile && source ~/.bash_britecore;
+[ -n "$PS1" ] && source ~/.bash_profile;
